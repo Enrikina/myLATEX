@@ -1,6 +1,21 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{RRLPoster}[2018/06/19 A class to make posters for the UPenn Rehab Robotics Lab, uses tikzposter under the hood]
 
+\newif\ifmjscustompaper
+\mjscustompaperfalse
+\newlength{\mjscustwidth}
+\newlength{\mjscustheight}
+
+\DeclareOption{ps30x40}{
+    \setlength{\mjscustwidth}{30in}
+    \setlength{\mjscustheight}{40in}
+    \mjscustompapertrue
+}
+\DeclareOption{ps40x30}{
+    \setlength{\mjscustwidth}{40in}
+    \setlength{\mjscustheight}{30in}
+    \mjscustompapertrue
+}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{tikzposter}}
 \ProcessOptions\relax
 
@@ -84,3 +99,13 @@
 \usepackage{array}
 %more space between table rows:
 \renewcommand{\arraystretch}{1.2}
+
+\ifmjscustompaper
+    \message{setting custom paper size to w:\the\mjscustwidth h:\the\mjscustheight}
+    \geometry{paperwidth=\mjscustwidth,paperheight=\mjscustheight}
+    \makeatletter
+    \setlength{\TP@visibletextwidth}{\textwidth-2\TP@innermargin}
+    \setlength{\TP@visibletextheight}{\textheight-2\TP@innermargin}
+    \makeatother
+\fi
+

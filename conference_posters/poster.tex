@@ -1,6 +1,4 @@
 \documentclass[]{RRLPoster}
-    
-    
     \title{\parbox{\linewidth}{\centering Put Your Title Here}}
     \author{Benjamin Franklin, Thomas Jefferson}
     \date{\today}
@@ -9,12 +7,13 @@
     % These are for customizing the way that TikZ draws things, These aren't in the 
     % class to allow authors to change this 
     \usepackage{pgfplots}
+    \pgfplotsset{compat=1.13}
     \usetikzlibrary{shapes,arrows,fit,positioning,patterns}
     \tikzstyle{block} = [rectangle, draw=colorTwo, very thick, fill=colorOne, 
     text centered, rounded corners, minimum height=2em, text=white]
     \tikzstyle{line} = [draw=colorTwo, latex'-latex', line width=1mm]
     \tikzstyle{mycloud} = [cloud, draw,cloud puffs=10,cloud puff arc=120, aspect=2, inner ysep=.2em]
-    
+    \usepackage[inline]{enumitem}
 \begin{document}
 
 \maketitle
@@ -100,6 +99,15 @@ You can place a headline or abstract here, or delete this block.
         
     \end{tikzpicture}
     }
+    \block{Paper Size}{You can set the paper size by passing an argument
+    into the class call: \texttt{\textbackslash documentclass[<-here->]{RRLPoster}} 
+        Your options are:
+        \begin{itemize*}
+            \item a0paper
+            \item a1paper
+            \item sz30x40
+            \item sz40x30
+        \end{itemize*}}
     \column{0.4}
     \block{A Table}{
     It is important for style that tables not have any vertical lines, as 
